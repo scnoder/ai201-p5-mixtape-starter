@@ -44,8 +44,12 @@ Notification saved to database
 ```
 
 # Root Cause Analysis
+
 ## Issue 1:
+The listening streak was resetting on Sundays because `streak_service.py` only incremented the streak when the user listened the next day **and that day was not Sunday**. Removing the unnecessary Sunday restriction allows the streak to increment on any consecutive calendar day.
 
 ## Issue 2:
- 
+The "Friends Listening Now" feed used a rolling 24-hour window to determine recent activity. This allowed listening events from the previous day to appear. The cutoff should instead represent the intended start of the current day so that the feed only shows current-day listening activity.
+
 ## Issue 3:
+Search results could contain the same song multiple times because `search_service.py` joins songs with the `song_tags` table. Songs with multiple tags produce multiple database rows for the same song. Adding `.distinct()` to the query ensures each song appears only once in the search results.
