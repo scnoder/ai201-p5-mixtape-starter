@@ -1,5 +1,5 @@
 # AI Usage
-
+I used AI to help read through my code and provide insight. In case there were any logical errors like there was for the second issue, it helped me properly trace through the code. The AI also helped me find the easiest fix because my ideas for fixing wouldn't always be the easist and most efficient.
 
 # Codebase Map
 ## Main Files
